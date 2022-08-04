@@ -4,7 +4,7 @@ public class MySingleLinkedList<T> {
 
 	public Node<T> head;
 	public int size;
-
+	
 	public MySingleLinkedList() {
 		head = null;
 		size = 0;
@@ -163,13 +163,14 @@ public class MySingleLinkedList<T> {
 		
 		// 2. index = 0 -> 첫번째 노드삭제 
 		if(index == 0) {
-			removeFirst();
+			return removeFirst();
 		}
 		
 		// 3. 그 외의경우 -> getNode(index-1)로 삭제할 인덱스 바로전 노드 찾고, removeAfter()로 다음노드 삭제 
-		Node<T> findNode = getNode(index-1);
-		
-		return removeAfter(findNode);
+		else {
+			Node<T> findNode = getNode(index-1);
+			return removeAfter(findNode);
+		}
 	}
 	
 	
@@ -178,7 +179,7 @@ public class MySingleLinkedList<T> {
 		// p는 head, q는 p의 이전노드
 		Node<T> p = head, q = null;
 		// p가 노드내에있으면서 p의 데이터가 찾는데이터와 같지않으면 -> q는 p의 이전값으로 저장
-		while(p != null && ! p.equals(item) ) {
+		while(p != null && ! p.data.equals(item) ) {
 			q = p;
 			p = p.next;
 		}
